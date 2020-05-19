@@ -114,6 +114,8 @@ public:
 
 	Point2 to_local(Point2 p_global) const;
 	Point2 to_global(Point2 p_local) const;
+	Point2 to_local_rotation(Point2 p_global) const;
+	Point2 to_global_rotation(Point2 p_local) const;
 
 	void set_z_as_relative(bool p_enabled);
 	bool is_z_relative() const;

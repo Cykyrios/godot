@@ -710,6 +710,16 @@ Vector3 Spatial::to_global(Vector3 p_local) const {
 	return get_global_transform().xform(p_local);
 }
 
+Vector3 Spatial::to_local_basis(Vector3 p_global) const {
+
+	return get_global_transform().get_basis().xform_inv(p_global);
+}
+
+Vector3 Spatial::to_global_basis(Vector3 p_local) const {
+
+	return get_global_transform().get_basis().xform(p_local);
+}
+
 void Spatial::set_notify_transform(bool p_enable) {
 	data.notify_transform = p_enable;
 }
@@ -797,6 +807,8 @@ void Spatial::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("to_local", "global_point"), &Spatial::to_local);
 	ClassDB::bind_method(D_METHOD("to_global", "local_point"), &Spatial::to_global);
+	ClassDB::bind_method(D_METHOD("to_local_basis", "global_direction"), &Spatial::to_local_basis);
+	ClassDB::bind_method(D_METHOD("to_global_basis", "local_direction"), &Spatial::to_global_basis);
 
 	BIND_CONSTANT(NOTIFICATION_TRANSFORM_CHANGED);
 	BIND_CONSTANT(NOTIFICATION_ENTER_WORLD);
